@@ -4,7 +4,7 @@
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#day-1">Day 1</a></li>
+    <li><a href="#greedy">Greedy</a></li>
     <li><a href="#day-2">Day 2</a></li>
     <li><a href="#day-3">Day 3</a></li>
     <li><a href="#day-4">Day 4</a></li>
@@ -15,4 +15,8 @@
   </ol>
 </details>
 
-## Day 1
+## Greedy
+
+### 거스름돈
+
+
