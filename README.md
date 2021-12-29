@@ -1,4 +1,4 @@
-# Data-Structure
+# Algorithm
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
