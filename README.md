@@ -11,6 +11,7 @@
     <li><a href="#day-5">Day 5</a></li>
     <li><a href="#day-6">Day 6</a></li>
     <li><a href="#day-7">Day 7</a></li>
+    <li><a href="#day-8">Day 8</a></li>
   </ol>
 </details>
 
