@@ -14,9 +14,9 @@
     <li><a href="#day-8">Day 8</a></li>
   </ol>
 </details>
+<br>
 
 ## Greedy
-
 <br>
 
 ### 거스름돈
