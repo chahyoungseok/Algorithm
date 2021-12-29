@@ -32,4 +32,19 @@ for i in range(0,4) :
 
 <br>
 
+### 큰수의 법칙
 
+``` law of large numbers
+N, M, K = map(int,input().split())
+
+intArr = list(map(int,input().split()))
+intArr.sort()
+
+max = intArr[N - 1]
+submax = intArr[N - 2]
+
+count = int(M/(K + 1))
+
+sum = submax * count + max * (M - count)
+print(sum)
+```
