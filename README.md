@@ -22,7 +22,6 @@
 ### 거스름돈
 
 ``` changeMoney
-
 changeMoney = int(input("거스름돈을 입력하세요: "))
 money_unit = [500, 100, 50, 10]
 
@@ -34,23 +33,4 @@ for i in range(0,4) :
 
 <br>
 
-### 큰수의 법칙
 
-``` law of large numbers
-
-N, M, K = map(int,input().split())
-
-intArr = list(map(int,input().split()))
-intArr.sort()
-
-max = intArr[N - 1]
-submax = intArr[N - 2]
-
-count = int(M/(K + 1))
-
-sum = submax * count + max * (M - count)
-print(sum)
-
-```
-
-```
