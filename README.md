@@ -48,3 +48,12 @@ count = int(M/(K + 1))
 sum = submax * count + max * (M - count)
 print(sum)
 ```
+
+<br>
+
+### 숫자 카드 게임
+
+``` number card game
+
+```
+
