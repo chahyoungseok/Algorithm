@@ -65,3 +65,10 @@ for inList in range(0,N) :
 print(max(card))
 ```
 
+<br>
+
+### 1이 될 때까지
+
+``` until it becomes 1
+
+```
