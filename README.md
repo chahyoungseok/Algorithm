@@ -34,7 +34,8 @@ for i in range(0,4) :
 
 ### 큰수의 법칙
 
-``` law of large numbers
+``` law of large numbers 
+// N개 주어진 자연수들을 연속으로 더하되 K번 초과하지않고 총 M번 더했을 때의 최대값 (중복가능)
 N, M, K = map(int,input().split())
 
 intArr = list(map(int,input().split()))
@@ -54,7 +55,7 @@ print(sum)
 ### 숫자 카드 게임
 
 ``` number card game
-N, M = map(int, input().split())
+N, M = map(int, input().split()) // N은 행의 개수, M은 열의 개수
 
 card = []
 
