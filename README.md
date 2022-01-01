@@ -54,6 +54,14 @@ print(sum)
 ### 숫자 카드 게임
 
 ``` number card game
+N, M = map(int, input().split())
 
+card = []
+
+for inList in range(0,N) :
+    inList = list(map(int,input().split()))
+    card.append(min(inList))
+
+print(max(card))
 ```
 
