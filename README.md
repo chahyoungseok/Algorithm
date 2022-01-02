@@ -5,7 +5,7 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#greedy">Greedy</a></li>
-    <li><a href="#day-2">Day 2</a></li>
+    <li><a href="#avatar">Avatar</a></li>
     <li><a href="#day-3">Day 3</a></li>
     <li><a href="#day-4">Day 4</a></li>
     <li><a href="#day-5">Day 5</a></li>
@@ -96,4 +96,15 @@ while True :
 count += N - 1
 
 print(count)
+```
+
+<br>
+## Avatar
+
+
+### 상하좌우
+
+``` Up Down Left Right
+
+
 ```
