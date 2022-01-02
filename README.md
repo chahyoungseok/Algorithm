@@ -107,13 +107,4 @@ print(count)
 
 ``` Up Down Left Right
 
-
-```
-
-<br>
-
-### 시각
-
-``` clock
-
 ```
