@@ -131,3 +131,11 @@ for move in moveList :
 
 print(str(x) + " " + str(y))
 ```
+ 
+<br>
+
+### 시각
+
+``` clock
+
+```
