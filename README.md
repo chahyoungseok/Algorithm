@@ -244,4 +244,9 @@ Stack 사용법 (in Python)
  - 별도의 라이브러리가 필요없고, 기본 리스트에서 append, pop등을 사용
 
 Queue 사용법 (in Python)
- - 
+ - from collections import deque
+ - deque : stack과 queue의 장점을 모두 채택한 것
+
+재귀함수
+ - 자기 자신을 다시 호출하는 함수
+
