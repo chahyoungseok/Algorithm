@@ -6,7 +6,7 @@
   <ol>
     <li><a href="#greedy">Greedy</a></li>
     <li><a href="#avatar">Avatar</a></li>
-    <li><a href="#day-3">Day 3</a></li>
+    <li><a href="#dfs-/-bfs">DFS / BFS</a></li>
     <li><a href="#day-4">Day 4</a></li>
     <li><a href="#day-5">Day 5</a></li>
     <li><a href="#day-6">Day 6</a></li>
@@ -226,3 +226,10 @@ while True :
 
 print(visCount)
 ```
+
+<br>
+
+## DFS / BFS
+
+
+### ?
