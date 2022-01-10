@@ -249,3 +249,74 @@ Queue 사용법 (in Python)
 
 재귀함수
  - 자기 자신을 다시 호출하는 함수
+
+<br><br>
+
+DFS
+ - 깊이우선탐색 이라고 부르며, 그래프에서 깊은 부분을 우선적으로 탐색하는 알고리즘
+
+``` dfs
+def dfs(graph,  v, visited) :
+    visited[v] = True
+    print(v, end=' ')
+
+    for i in graph[v] :
+        if not visited[i] :
+            dfs(graph, i, visited)
+
+graph =[
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+visited = [False] * 9
+
+dfs(graph, 1, visited)
+```
+
+<br><br>
+
+BFS
+ - 너비우선탐색 이라고 부르며, 가까운 노드부터 탐색하는 알고리즘
+ - 인접한 노드가 여러개 있을 때, 숫자가 작은 노드부터 큐에 삽입하였다
+
+``` bfs
+from collections import deque
+
+def bfs (graph, start, visited) :
+    queue = deque([start])
+
+    visited[start] = True
+
+    while queue :
+        v = queue.popleft()
+        print(v, end=' ')
+
+        for i in graph[v] :
+            if not visited[i]:
+                queue.append(i)
+                visited[i] = True
+
+graph =[
+    [],
+    [2,3,8],
+    [1,7],
+    [1,4,5],
+    [3,5],
+    [3,4],
+    [7],
+    [2,6,8],
+    [1,7]
+]
+
+visited = [False] * 9
+
+bfs(graph, 1, visited)
+```
