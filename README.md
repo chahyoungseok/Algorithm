@@ -549,3 +549,25 @@ array = sorted(array, key= lambda score: score[1])
 for student in array :
     print(student[0], end=' ')
 ```
+
+<br>
+
+### 두 배열의 원소 교체
+
+``` swap elements in two arrays
+N, K = map(int, input().split())
+
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+A.sort()
+B.sort(reverse=True)
+
+for i in range(K) :
+    if B[i] > A[i] :
+        A[i], B[i] = B[i], A[i]
+    else :
+        break
+
+print(sum(A))
+```
