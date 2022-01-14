@@ -549,4 +549,3 @@ array = sorted(array, key= lambda score: score[1])
 for student in array :
     print(student[0], end=' ')
 ```
-
