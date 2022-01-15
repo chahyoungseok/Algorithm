@@ -8,7 +8,7 @@
     <li><a href="#avatar">Avatar</a></li>
     <li><a href="#dfs-bfs">DFS BFS</a></li>
     <li><a href="#sort">Sort</a></li>
-    <li><a href="#day-5">Day 5</a></li>
+    <li><a href="#search">Search</a></li>
     <li><a href="#day-6">Day 6</a></li>
     <li><a href="#day-7">Day 7</a></li>
     <li><a href="#day-8">Day 8</a></li>
@@ -570,4 +570,59 @@ for i in range(K) :
         break
 
 print(sum(A))
+```
+
+<br>
+
+## Search
+
+
+### 순차탐색
+
+``` sequential search
+def sequential_search(n, target, array) :
+    for i in range(n) :
+        if array[i] == target :
+            return i + 1
+
+print("생성할 원소 개수를 입력한 다음 한 칸 띄고 찾을 문자열을 입력하세요.")
+input_data = input().split()
+n = int(input_data[0])
+target = input_data[1]
+
+print("앞서 적은 원소 개수만큼 문자열을 입력하세요. 구분은 띄어쓰기 한 칸으로 합니다.")
+array = input().split()
+
+print(sequential_search(n, target, array))
+```
+
+<br>
+
+### 이진탐색
+
+``` binary search
+# 데이터가 정렬되어 있을 때, 사용할 수 있다.
+# 시간 복잡도가 O(logN) 이기 떄문에 데이터가 1000만 이상으로 가게되면 가급적 사용해야한다.
+
+def binary_search(array, target, start, end) :
+    if start > end:
+        return None
+    mid = (start + end) // 2
+
+    if array[mid] == target :
+        return mid
+    elif array[mid] > target :
+        return binary_search(array, target, start, mid - 1)
+    else :
+        return binary_search(array, target, mid + 1, end)
+
+n, target = list(map(int, input().split()))
+
+array = list(map(int, input().split()))
+
+result = binary_search(array, target, 0, n - 1)
+if result == None :
+    print("원소가 존재하지 않습니다.")
+else :
+    print(result + 1)
 ```
