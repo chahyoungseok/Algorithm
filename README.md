@@ -641,7 +641,6 @@ input_data = sys.stdin.readline().rstrip()
 print(input_data)
 ```
 
-
 <br>
 
 ### 부품 찾기
