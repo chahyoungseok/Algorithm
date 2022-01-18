@@ -706,3 +706,54 @@ while start <= end :
 
 print(result)
 ```
+
+<br>
+
+## Dynamic Programming
+
+
+### 이론
+
+다이나믹 프로그래밍
+ - 큰 문제를 작게 나누고, 같은 문제라면 한 번씩만 풀어 문제를 효율적으로 해결하는 알고리즘 기법.
+
+메모제이션 or 캐싱
+ - 한 번 구한 결과를 메모리 공간에 메모해두고 같은 식을 다시 호출하면 메모한 결과를 그대로 가져오는 기법.
+
+
+<br>
+
+### Top Down 방식(하향식)
+ - 메모제이션 방식을 사용하지 않음.
+ - 구현가능하다면 Bottom Up 방식을 사용하는게 좋음.
+
+``` top down
+d = [0] * 100
+
+def pibo(x) :
+    print("f(" + str(x) + ")", end=" ")
+    if x == 1 or x == 2 :
+        return 1
+    if d[x] != 0 :
+        return d[x]
+    d[x] = pibo(x - 1) + pibo(x - 2)
+    return d[x]
+
+pibo(6)
+```
+
+### Bottom Up 방식(상향식)
+ - 메모제이션 방식을 사용함.
+
+``` bottom up
+d = [0] * 100
+
+d[1] = 1
+d[2] = 1
+n = 99
+
+for i in range(3, n + 1) :
+    d[i] = d[i - 1] + d[i - 2]
+
+print(d[n])
+```
