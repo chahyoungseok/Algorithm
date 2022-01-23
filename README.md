@@ -10,7 +10,7 @@
     <li><a href="#sort">Sort</a></li>
     <li><a href="#search">Search</a></li>
     <li><a href="#dynamic-programming">Dynamic Programming</a></li>
-    <li><a href="#day-7">Day 7</a></li>
+    <li><a href="#shortest-path">Shortest Path</a></li>
     <li><a href="#day-8">Day 8</a></li>
   </ol>
 </details>
