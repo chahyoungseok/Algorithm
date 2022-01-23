@@ -825,3 +825,62 @@ if d[M] == 10001 :
 else :
     print(d[M])
 ```
+
+<br>
+
+## Shortest Path
+
+
+### 이론
+
+
+Dijkstra
+ - 음의 간선이 없을때, 정상동작
+ - 그리디 알고리즘으로 분류됨
+ - 각 노드들에 대한 최단거리 정보를 항상 1차원리스트에 저장
+
+
+<br>
+
+### Dijkstra
+
+``` dijkstra
+import heapq
+
+INF = int(1e9)
+
+n, m = map(int, input().split())
+start = int(input())
+
+graph = [[] for i in range(n + 1)]
+distance = [INF] * (n + 1)
+
+for _ in range(m) :
+    a, b, c = map(int, input().split())
+    graph[a].append((b,c))
+
+# graph는 (노드, 거리) / Heap은 (거리, 노드) 를 주의!
+def dijkstra(start) :
+    q = []
+    heapq.heappush(q,(0,start))
+    distance[start] = 0
+
+    while q:
+        dist, now = heapq.heappop(q)
+        if distance[now] < dist :
+            continue
+
+        for i in graph[now] :
+            cost = dist + i[1]
+            if cost < distance[i[0]] :
+                distance[i[0]] = cost
+                heapq.heappush(q,(cost, i[0]))
+
+dijkstra(start)
+
+for i in range(1, n + 1) :
+    if distance[i] == INF :
+        print("INFINITY")
+    else :
+        print(distance[i])
+```
