@@ -919,3 +919,34 @@ for a in range(1, n+1) :
             print(graph[a][b], end=" ")
     print()
 ```
+
+<br>
+
+### 미래 도시
+
+``` future city
+INF = int(1e9)
+
+N, M = map(int, input().split())
+
+graph = [[INF] * (N+1) for i in range(M + 1)]
+
+for i in range(M) :
+a, b = map(int, input().split())
+graph[a][b] = 1
+graph[b][a] = 1
+
+X, K = map(int, input().split())
+
+for k in range(1, N + 1) :
+for i in range(1, N + 1):
+for j in range(1, N + 1):
+graph[i][j] = min(graph[i][k] + graph[k][j], graph[i][j])
+
+distance = graph[1][K] + graph[K][X]
+
+if distance >= INF :
+print("-1")
+else :
+print(distance)
+```
