@@ -950,3 +950,39 @@ print("-1")
 else :
 print(distance)
 ```
+
+<br>
+
+### 전보
+
+``` telegram
+import heapq
+
+INF = int(1e9)
+N, M, C = map(int, input().split())
+visitCount = 0
+sumDistance = 0
+
+graph = [[] for _ in range(N + 1)]
+
+for i in range(M) :
+X, Y, Z = map(int, input().split())
+graph[X].append((Y,Z))
+
+distances = [INF] * (N + 1)
+
+q = []
+distances[C] = 0
+heapq.heappush(q, (0, C))
+
+while q :
+dist, now = heapq.heappop(q)
+
+if dist > distances[now] :
+continue
+
+for i in graph[now] :
+cost = dist + i[1]
+if cost < distances[i[0]] :
+distances[i[0]] = cost
+heapq.heap
