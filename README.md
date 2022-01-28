@@ -11,7 +11,7 @@
     <li><a href="#search">Search</a></li>
     <li><a href="#dynamic-programming">Dynamic Programming</a></li>
     <li><a href="#shortest-path">Shortest Path</a></li>
-    <li><a href="#day-8">Day 8</a></li>
+    <li><a href="#graph">Graph</a></li>
   </ol>
 </details>
 <br>
@@ -925,30 +925,32 @@ for a in range(1, n+1) :
 ### 미래 도시
 
 ``` future city
-INF = int(1e9)
-
 N, M = map(int, input().split())
 
-graph = [[INF] * (N+1) for i in range(M + 1)]
+INF = int(1e9)
+graph = [[INF] * (N + 1) for _ in range(N + 1)]
+
+for i in range(1, N + 1) :
+    graph[i][i] = 0
 
 for i in range(M) :
-a, b = map(int, input().split())
-graph[a][b] = 1
-graph[b][a] = 1
+    a,b = map(int, input().split())
+    graph[a][b] = 1
+    graph[b][a] = 1
 
 X, K = map(int, input().split())
 
-for k in range(1, N + 1) :
-for i in range(1, N + 1):
-for j in range(1, N + 1):
-graph[i][j] = min(graph[i][k] + graph[k][j], graph[i][j])
+for k in range(1,N + 1) :
+    for i in range(1, N + 1) :
+        for j in range(1, N + 1) :
+            graph[i][j] = min(graph[i][k] + graph[k][j], graph[i][j])
 
-distance = graph[1][K] + graph[K][X]
+distances = graph[1][K] + graph[K][X]
 
-if distance >= INF :
-print("-1")
+if distances >= INF :
+    print("-1")
 else :
-print(distance)
+    print(distances)
 ```
 
 <br>
@@ -959,30 +961,47 @@ print(distance)
 import heapq
 
 INF = int(1e9)
-N, M, C = map(int, input().split())
 visitCount = 0
-sumDistance = 0
+maxDistance = 0
+
+N, M, C = map(int, input().split())
 
 graph = [[] for _ in range(N + 1)]
 
 for i in range(M) :
-X, Y, Z = map(int, input().split())
-graph[X].append((Y,Z))
+    X, Y, Z = map(int, input().split())
+    graph[X].append((Y,Z))
 
-distances = [INF] * (N + 1)
+distances = [INF for _ in range(N + 1)]
 
 q = []
+heapq.heappush(q, (0,C))
 distances[C] = 0
-heapq.heappush(q, (0, C))
 
 while q :
-dist, now = heapq.heappop(q)
+    dist, now = heapq.heappop(q)
 
-if dist > distances[now] :
-continue
+    if dist > distances[now] :
+        continue
 
-for i in graph[now] :
-cost = dist + i[1]
-if cost < distances[i[0]] :
-distances[i[0]] = cost
-heapq.heap
+    for i in graph[now] :
+        cost = dist + i[1]
+        if distances[i[0]] > cost :
+            distances[i[0]] = cost
+            heapq.heappush(q, (cost, i[0]))
+
+for i in range(1, M + 1) :
+    if distances[i] != INF :
+        visitCount += 1
+        maxDistance = max(maxDistance, distances[i])
+
+print("가장 멀리있는 노드의 거리는 : " + str(maxDistance) + "\n방문한 노드의 개수는 : " + str(visitCount))
+```
+
+<br>
+
+## Graph
+
+
+### 이론
+
