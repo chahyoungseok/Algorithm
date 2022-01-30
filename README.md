@@ -1005,3 +1005,57 @@ print("가장 멀리있는 노드의 거리는 : " + str(maxDistance) + "\n방�
 
 ### 이론
 
+인접행렬 
+ - 2차원 배열을 사용하는 방식
+ - ex) Floyd
+
+인접리스트
+ - 리스트를 사용하는 방식
+ - Dijkstra
+
+서로소 집합
+ - 공통원소가 없는 두 집합을 의미한다.
+ - 서로소 부분 집합들로 나누어진 원소들의 데이터를 처리하기 위한 자료구조로 서로소 집합 자료구조가 있다.
+ - cf) union - find 자료구조
+
+union - find 
+ - 1. union 연산을 확인하여, 서로 연결된 두 노드 A,B를 확인한다. 
+ - 2. A와 B의 루트노드를 각각 찾고, 작은 루트노드를 큰 루트노드가 가르키게한다.
+ - 3. 모든 union 연산을 처리할 때까지 1,2번과정을 반복한다.
+
+```union - find
+def find_parent(parent, x) :
+    if parent[x] != x:
+        return find_parent(parent, parent[x])
+    return parent[x]
+
+def union_parent(parent, a, b) :
+    a = find_parent(parent, a)
+    b = find_parent(parent, b)
+
+    if a < b :
+        parent[b] = a
+    else :
+        parent[a] = b
+
+v, e = map(int, input().split())
+parent = [0] * (v + 1)
+
+for i in range(1, v + 1) :
+    parent[i] = i
+
+for i in range(e) :
+    a, b = map(int, input().split())
+    union_parent(parent, a, b)
+
+print("각 원소가 속한 집합: ", end='')
+for i in range(1, v + 1) :
+    print(find_parent(parent, i), end=' ')
+
+print()
+
+print("부모 테이블: ", end='')
+for i in range(1, v + 1) :
+    print(parent[i], end=' ')
+
+```
