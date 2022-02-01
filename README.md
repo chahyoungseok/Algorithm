@@ -12,6 +12,7 @@
     <li><a href="#dynamic-programming">Dynamic Programming</a></li>
     <li><a href="#shortest-path">Shortest Path</a></li>
     <li><a href="#graph">Graph</a></li>
+    <li><a href="#practice-solution">연습 문제</a></li>
   </ol>
 </details>
 <br>
@@ -1196,3 +1197,8 @@ def topology_sort():
 
 topology_sort()
 ```
+
+<br>
+
+## Practice Solution
+
