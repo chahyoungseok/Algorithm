@@ -1204,7 +1204,11 @@ topology_sort()
 
 <br>
 
-#### Greedy Solution
+### Greedy Solution
+
+<br>
+
+#### Adventure's Guild
 
 ``` Adventure's Guild
 N = int(input())
