@@ -1206,7 +1206,6 @@ topology_sort()
 
 ### Greedy Solution
 
-<br>
 
 #### Adventure's Guild
 
