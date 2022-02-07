@@ -1304,23 +1304,30 @@ for i in range(1, M + 1) :
 
 print(case_count)
 ```
+
 <br>
 
-#### lucky straight
+#### mukBang live
 
-``` lucky straight
-N = input()
-half_index = int(len(N) / 2)
+``` mukBang live
+import heapq
 
-left_sum = 0
-right_sum = 0
+def solution(food_times, k):
+    food_count = len(food_times)
+    time_now = 0
+    q = []
+    for i in range(0,food_count) :
+        heapq.heappush(q, (food_times[i], i + 1))
 
-for i in range(0, half_index) :
-    left_sum += int(N[i])
-    right_sum += int(N[i + half_index])
+    while True :
+        time, num = heapq.heappop(q)
 
-if left_sum == right_sum :
-    print("LUCKY")
-else :
-    print("READY")
+        if k > time_now + (time * (len(q) + 1)) :
+            time_now += time * (len(q) + 1)
+        else :
+            time, num = q[(k - time_now - 1) % len(q)]
+            return num
+
+
+print("정전이후 먹어야 될 음식의 번호 : " + str(solution([3, 1, 2], 5)) + "번")
 ```
