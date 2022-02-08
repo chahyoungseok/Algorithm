@@ -1332,6 +1332,8 @@ def solution(food_times, k):
 print("정전이후 먹어야 될 음식의 번호 : " + str(solution([3, 1, 2], 5)) + "번")
 ```
 
+### Avatar Solution
+
 <br>
 
 #### lucky straight
