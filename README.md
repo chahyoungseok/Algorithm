@@ -1379,3 +1379,44 @@ if n_sum != 0 :
 
 print(''.join(q))
 ```
+
+<br>
+
+#### Compress String
+
+``` compress string
+def solution(s) :
+    minLen = int(1e9)
+
+    for length in range(1, int(len(s) / 2) + 1):
+        compressStr = ""
+        sameCount = 1
+        preStr = s[0:length]
+
+        for i in range(length,len(s) + 1,length) :
+            if len(s) >= i + length :
+                if preStr == s[i: i + length]:
+                    sameCount += 1
+                else:
+                    if sameCount != 1 :
+                        compressStr += str(sameCount) + preStr
+                    else :
+                        compressStr += preStr
+
+                    preStr = s[i: i + length]
+                    sameCount = 1
+            else :
+                if sameCount != 1:
+                    compressStr += str(sameCount) + preStr
+                else :
+                    compressStr += preStr
+
+                compressStr += s[i : len(s)]
+
+        minLen = min(minLen, len(compressStr))
+
+    return minLen
+
+s = input()
+print(solution(s))
+```
