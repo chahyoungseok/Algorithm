@@ -1463,7 +1463,7 @@ def solution(key, lock):
                 if check(new_lock) :
                     return True
 
-                for i in range(lock_size) :
+                for i in range(lock_size) : 
                     for j in range(lock_size) :
                         new_lock[x + i][y + j] -= key[i][j]
 
