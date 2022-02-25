@@ -2098,3 +2098,15 @@ def solution(board):
 board = [[0, 0, 0, 1, 1],[0, 0, 0, 1, 0],[0, 1, 0, 1, 1],[1, 1, 0, 0, 1],[0, 0, 0, 0, 0]]
 print(solution(board))
 ```
+
+<br>
+
+#### Antenna
+
+``` antenna
+N = int(input())
+house_list = list(map(int, input().split()))
+house_list.sort()
+
+print(house_list[(N-1) // 2])
+```
