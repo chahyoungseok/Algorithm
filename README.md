@@ -1200,7 +1200,7 @@ topology_sort()
 
 <br>
 
-#### Make Team
+#### 팀 결성
 
 ``` make team
 def find_parent(parent, x) :
