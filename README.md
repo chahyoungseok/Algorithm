@@ -2914,3 +2914,55 @@ print(solution(id_list, report, k))
 - 중복제거 : set()
 - 파이썬 딕셔너리 사용법 : {}
   - {n : ? for n in ~} 
+
+
+<br>
+
+#### Recommand New Id 
+
+``` recommand new id
+def solution(new_id):
+    new_id = new_id.lower()
+    imposs_char = "~!@#$%^&*()=+[{]}:?,<>/"
+
+    for char in imposs_char:
+        if char in new_id:
+            new_id = new_id.replace(char, '')
+
+    i = 0
+    while i < len(new_id) :
+        if new_id[i:i+2] == ".." :
+            new_id = new_id[:i+1] + new_id[i+2:]
+            i -= 1
+        i +=1
+
+    if new_id[0] == '.' :
+        new_id = new_id[1:]
+
+    new_id_size = len(new_id)
+    if new_id and new_id[new_id_size - 1] == '.' :
+        new_id = new_id[:new_id_size - 1]
+
+    if not new_id:
+        new_id = "a"
+
+    if len(new_id) >= 16:
+        new_id = new_id[:15]
+
+    new_id_size = len(new_id)
+    if new_id[new_id_size - 1] == '.':
+        new_id = new_id[:new_id_size - 1]
+
+    while len(new_id) <= 2:
+        new_id += new_id[len(new_id) - 1]
+    
+    print(new_id)
+    return new_id
+
+
+solution("...!@BaT#*..y.abcdefghijklm")
+solution("z-+.^.")
+solution("=.=")
+solution("123_.def")
+solution("abcdefghijklmn.p")
+```
