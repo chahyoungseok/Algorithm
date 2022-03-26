@@ -13,6 +13,7 @@
     <li><a href="#shortest-path">Shortest Path</a></li>
     <li><a href="#graph">Graph</a></li>
     <li><a href="#practice-solution">Practice Solution</a></li>
+    <li><a href="#all-practice">All-Practice</a></li>
   </ol>
 </details>
 <br>
@@ -2875,3 +2876,41 @@ for _ in range(P) :
 
 print(result)
 ```
+
+<br><br>
+
+## All practice
+
+#### Get report results
+
+``` get report results
+def solution(id_list, report, k):
+    id_size = len(id_list)
+    reported = {id: [] for id in id_list}
+    mail_list = {id: 0 for id in id_list}
+
+    for content in set(report):
+        repo, repoed = content.split()
+        reported[repoed].append(repo)
+
+    for key, value in reported.items():
+        if len(value) >= k:
+            for i in value:
+                mail_list[i] += 1
+
+    return mail_list.values()
+
+id_list = ["muzi", "frodo", "apeach", "neo"]
+report = ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"]
+k = 2
+
+# id_list = ["con", "ryan"]
+# report = ["ryan con", "ryan con", "ryan con", "ryan con"]
+# k = 3
+print(solution(id_list, report, k))
+```
+
+배운점 :
+- 중복제거 : set()
+- 파이썬 딕셔너리 사용법 : {}
+  - {n : ? for n in ~} 
