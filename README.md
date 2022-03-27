@@ -2966,3 +2966,28 @@ solution("=.=")
 solution("123_.def")
 solution("abcdefghijklmn.p")
 ```
+
+<br>
+
+#### Draw Doll
+
+``` draw doll
+def solution(board, moves):
+    result, basket = 0, []
+    for move in moves:
+        for weight in board:
+            if weight[move - 1] != 0:
+                if basket and basket[len(basket) - 1] == weight[move - 1]:
+                    basket.pop()
+                    result += 2
+                else :
+                    basket.append(weight[move - 1])
+                weight[move - 1] = 0
+                break
+
+    return result
+
+board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
+moves = [1,5,3,5,1,2,1,4]
+print(solution(board, moves))
+```
