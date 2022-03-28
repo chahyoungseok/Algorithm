@@ -2991,3 +2991,22 @@ board = [[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]
 moves = [1,5,3,5,1,2,1,4]
 print(solution(board, moves))
 ```
+
+<br>
+
+#### K' th Number
+
+``` K' th number
+def solution(array, commands):
+    answer = []
+    for command in commands:
+        cur_arr = array[command[0] - 1: command[1]]
+        cur_arr.sort()
+        answer.append(cur_arr[command[2] - 1])
+
+    return answer
+
+array = [1, 5, 2, 6, 3, 7, 4]
+commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]
+print(solution(array, commands))
+```
