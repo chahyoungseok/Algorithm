@@ -3010,3 +3010,36 @@ array = [1, 5, 2, 6, 3, 7, 4]
 commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]
 print(solution(array, commands))
 ```
+
+<br>
+
+#### Gym Suit
+
+``` gym suit
+def solution(n, lost, reserve):
+    set_reserve = set(reserve) - set(lost)
+    set_lost = set(lost) - set(reserve)
+    for number in set_lost:
+        if number - 1 in set_reserve:
+            set_reserve.remove(number - 1)
+        elif number + 1 in set_reserve:
+            set_reserve.remove(number + 1)
+        else :
+            n-=1
+
+    return n
+
+n = 5
+lost = [2, 4]
+reserve = [1, 3, 5]
+
+n = 5
+lost = [2, 4]
+reserve = [3]
+
+n = 3
+lost = [3]
+reserve = [1]
+
+solution(n, lost, reserve)
+```
