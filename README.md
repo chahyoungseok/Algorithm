@@ -3043,3 +3043,58 @@ reserve = [1]
 
 solution(n, lost, reserve)
 ```
+
+<br>
+
+#### Click Keypad
+
+``` click keypad
+def distance(x, y):
+    return abs(x[0] - y[0]) + abs(x[1] - y[1])
+
+
+def solution(numbers, hand):
+    cur_left, cur_right = [3, 0], [3, 2]
+    answer = ""
+    for number in numbers:
+        if number == 0:
+            number = 10
+        else:
+            number -= 1
+        row, colum = number // 3, number % 3
+
+        if colum == 0:
+            cur_left = [row, colum]
+            answer += 'L'
+        elif colum == 2:
+            cur_right = [row, colum]
+            answer += 'R'
+        else:
+            if distance((row, colum), cur_left) < distance((row, colum), cur_right):
+                cur_left = [row, colum]
+                answer += 'L'
+            elif distance((row, colum), cur_left) > distance((row, colum), cur_right):
+                cur_right = [row, colum]
+                answer += 'R'
+            else:
+                if hand == "left":
+                    cur_left = [row, colum]
+                    answer += 'L'
+                else:
+                    cur_right = [row, colum]
+                    answer += 'R'
+
+    return answer
+
+numbers = [1, 3, 4, 5, 8, 2, 1, 4, 5, 9, 5]
+hand = "right"
+print(solution(numbers, hand))
+
+numbers = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2]
+hand = "left"
+print(solution(numbers, hand))
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+hand = "right"
+print(solution(numbers, hand))
+```
