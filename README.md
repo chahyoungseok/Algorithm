@@ -3128,3 +3128,38 @@ def solution(record):
 arr = ["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]
 print(solution(arr))
 ```
+
+<br>
+
+#### Function Development
+
+``` function development
+from collections import deque
+
+def solution(progresses, speeds):
+    progresses, speeds = deque(progresses), deque(speeds)
+    answer = []
+
+    while progresses:
+        index = 0
+        for i in range(0, len(progresses)):
+            progresses[i] = progresses[i] + speeds[i]
+
+        while progresses and progresses[0] >= 100:
+            progresses.popleft()
+            speeds.popleft()
+            index += 1
+
+        if index != 0:
+            answer.append(index)
+
+    return answer
+
+progresses = [93, 30, 55]
+speeds = [1, 30, 5]
+print(solution(progresses,speeds))
+
+progresses = [95, 90, 99, 99, 80, 99]
+speeds = [1, 1, 1, 1, 1, 1]
+print(solution(progresses,speeds))
+```
