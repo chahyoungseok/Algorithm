@@ -3098,3 +3098,33 @@ numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 hand = "right"
 print(solution(numbers, hand))
 ```
+
+<br>
+
+#### Open Chatting
+
+``` open chatting
+def solution(record):
+    user = {}
+    answers = []
+    result = []
+    for i in record:
+        data = i.split()
+        if data[0] == "Change":
+            user[data[1]] = data[2]
+        else:
+            if data[0] == "Enter" :
+                user[data[1]] = data[2]
+            answers.append([data[0], data[1]])
+
+    for answer in answers:
+        if answer[0] == "Enter":
+            result.append(user[answer[1]] + "님이 들어왔습니다.")
+        else:
+            result.append(user[answer[1]] + "님이 나갔습니다.")
+
+    return result
+
+arr = ["Enter uid1234 Muzi", "Enter uid4567 Prodo","Leave uid1234","Enter uid1234 Prodo","Change uid4567 Ryan"]
+print(solution(arr))
+```
