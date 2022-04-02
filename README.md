@@ -3163,3 +3163,33 @@ progresses = [95, 90, 99, 99, 80, 99]
 speeds = [1, 1, 1, 1, 1, 1]
 print(solution(progresses,speeds))
 ```
+
+<br>
+
+#### Target Number
+
+``` target number
+from collections import deque
+
+def solution(numbers, target):
+    total = deque([0])
+    numbers = deque(numbers)
+    answer = 0
+
+    while numbers:
+        number = numbers.popleft()
+        for _ in range(len(total)):
+            sel = total.popleft()
+            total.append(sel - number)
+            total.append(sel + number)
+
+    for i in total:
+        if i == target:
+            answer += 1
+
+    return answer
+
+numbers   = [1, 1, 1, 1, 1]
+target = 3
+print(solution(numbers,target))
+```
