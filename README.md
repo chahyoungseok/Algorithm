@@ -3283,3 +3283,26 @@ priorities = [1, 1, 9, 1, 1, 1]
 location = 0
 print(solution(priorities,location))
 ```
+
+<br>
+
+#### Big Number
+
+``` big number
+def solution(numbers):
+    numbers = list(map(str, numbers))
+    numbers.sort(key=lambda x : x * 3, reverse=True)
+    print(numbers)
+
+    return str(int("".join(numbers)))
+
+
+numbers = [6, 10, 2]
+print(solution(numbers))
+
+numbers = [3, 30, 34, 5, 9]
+print(solution(numbers))
+```
+
+배운점
+ - 정렬방식
