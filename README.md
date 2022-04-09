@@ -3386,3 +3386,31 @@ n = 6
 vertex = [[3, 6], [4, 3], [3, 2], [1, 3], [1, 2], [2, 4], [5, 2]]
 print(solution(n, vertex))
 ```
+
+<br>
+
+#### LAN Cable Cut
+
+``` lan cable cut
+
+lan_list = []
+K, N = map(int, input().split())
+for _ in range(K) :
+    lan_list.append(int(input()))
+
+
+def binary_search(target, start, end) :
+    mid, sum = (start + end) // 2, 0
+    if start > end :
+        return mid
+
+    for lan in lan_list :
+        sum += lan // mid
+
+    if target > sum :
+        return binary_search(target, start, mid - 1)
+    elif target <= sum :
+        return binary_search(target, mid + 1, end)
+
+print(binary_search(N, 1, max(lan_list)))
+```
