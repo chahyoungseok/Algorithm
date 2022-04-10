@@ -3414,3 +3414,31 @@ def binary_search(target, start, end) :
 
 print(binary_search(N, 1, max(lan_list)))
 ```
+
+<br>
+
+#### Immigration
+
+``` immigration
+def solution(n, times):
+    start, end = 1, max(times) * n
+    last = 0
+
+    while start <= end:
+        mid, result = (start + end) // 2, 0
+
+        for time in times:
+            result += mid // time
+
+        if n > result:
+            start = mid + 1
+        else:
+            last = mid
+            end = mid - 1
+
+    return last
+
+n = 6
+times = [7, 10]
+print(solution(n, times))
+```
