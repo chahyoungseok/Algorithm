@@ -3501,3 +3501,43 @@ def solution(places):
 places = [["POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"], ["POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"], ["PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"], ["OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"], ["PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"]]
 print(solution(places))
 ```
+
+<br>
+
+#### Network
+
+``` network
+from collections import deque
+
+def solution(n, computers):
+    answer = 0
+
+    for i in range(n):
+        if computers[i][i] != 0:
+            computers[i][i] = 0
+
+            queue = deque([i])
+
+            while queue:
+                node = queue.popleft()
+                computers[node][node]
+
+                for i in range(n):
+                    if computers[node][i] == 1:
+                        queue.append(i)
+                        computers[node][i] = 0
+                        computers[i][node] = 0
+
+            answer += 1
+
+    return answer
+
+
+n=3
+computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+print(solution(n, computers))
+
+n=3
+computers = [[1, 1, 0], [1, 1, 1], [0, 1, 1]]
+print(solution(n, computers))
+```
