@@ -3541,3 +3541,44 @@ n=3
 computers = [[1, 1, 0], [1, 1, 1], [0, 1, 1]]
 print(solution(n, computers))
 ```
+
+<br>
+
+#### Joy Stick
+
+```joy stick
+def solution(name):
+    answer, n1, n2, name_size = 0, 0, 0, len(name)
+
+    for i in range(name_size - 1, 0, -1) :
+        if name[i] == 'A' :
+            n1 += 1
+        else :
+            break
+
+    for i in range(1, name_size, 1) :
+        if name[i] == 'A' :
+            n2 += 1
+        else :
+            break
+
+    move = name_size - min(n1, n2) - 1 # 최대 이동거리
+
+    for i in range(name_size) :
+        answer += min(ord(name[i]) - 65, 91 - ord(name[i]))
+
+        index = i
+        while index < name_size and name[index] == 'A' :
+            index += 1
+
+        move = min(move, i * 2 + name_size - index, (i + 2 * (name_size - index)))
+
+    answer += move
+    return answer
+
+name = "JEROEN"
+print(solution(name))
+
+name = "JAN"
+print(solution(name))
+```
