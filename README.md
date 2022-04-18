@@ -3714,3 +3714,29 @@ weight = 10
 truck_weights = [1,1,1,1,1,1,1,1,1,1,1,1,1]
 print(solution(bridge_length, weight, truck_weights))
 ``` 
+
+<br>
+
+#### Carpet
+
+``` carpet
+def solution(brown, yellow):
+    answer = []
+
+    w_h = brown // 2
+
+    for i in range(1, w_h - 1) :
+        weight = w_h - i
+        height = w_h - weight + 2
+
+        if yellow == (weight - 2) * (height - 2) :
+            answer.append(weight)
+            answer.append(height)
+            break
+
+    return answer
+
+brown = 10
+yellow = 2
+print(solution(brown, yellow))
+```
