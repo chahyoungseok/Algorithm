@@ -3771,3 +3771,57 @@ print(solution(citations))
 citations = [0, 0, 0, 0, 0]
 print(solution(citations))
 ```
+
+<br>
+
+#### Word Conversion
+
+``` word conversion
+from collections import deque
+
+
+def check_go(word_1, word_2):
+    index = 0
+    for i in range(len(word_1)):
+        if word_1[i] != word_2[i]:
+            index += 1
+
+    return 1 >= index
+
+
+def solution(begin, target, words):
+    answer, word_len, = 0, len(words)
+
+    visited = [False] * word_len
+    queue = deque([])
+
+    for i in range(word_len):
+        if check_go(begin, words[i]):
+            queue.append([words[i], 0])
+            visited[i] = True
+
+    while queue:
+        trans_word, dist = queue.popleft()
+
+        if trans_word == target:
+            answer = dist + 1
+            break
+
+        for i in range(word_len):
+            if not visited[i] and check_go(trans_word, words[i]):
+                queue.append([words[i], dist + 1])
+                visited[i] = True
+
+    return answer
+
+begin = "hit"
+target = "cog"
+words = ["hot", "dot", "dog", "lot", "log", "cog"]
+print(solution(begin,target, words))
+
+
+begin = "hit"
+target = "cog"
+words = ["hot", "dot", "dog", "lot", "log"]
+print(solution(begin,target, words))
+```
