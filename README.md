@@ -3864,3 +3864,17 @@ print(solution(answer))
 answer = [1,3,2,4,2]
 print(solution(answer))
 ```
+<br>
+
+#### Bring Mid Word
+
+```bring mid word
+def solution(s):
+    answer = ''
+    s_len = len(s)
+    if s_len % 2 == 0 :
+        answer = s[s_len//2 - 1 : s_len//2 + 1]
+    else :
+        answer = s[s_len//2]
+    return answer
+```
