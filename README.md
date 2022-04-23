@@ -3878,3 +3878,42 @@ def solution(s):
         answer = s[s_len//2]
     return answer
 ```
+
+<br>
+
+#### Make Big Numbers
+
+``` make big numbers
+def solution(number, k):
+    sub, index, size = 0, 0, len(number)
+
+    while sub != k and size - 1 > index:
+        if number[index] != '9' and number[index] < number[index + 1] :
+            number = number[:index] + number[index + 1:]
+            sub += 1
+            index -= 1
+            size -= 1
+        else :
+            index += 1
+
+        if index < 0 :
+            index = 0
+
+    return "".join(number[0:size - k + sub])
+
+
+number = "1924"
+k = 3
+print(solution(number, k))
+
+number = "1231234"
+k = 3
+print(solution(number, k))
+
+number = "4177252841"
+k = 4
+print(solution(number, k))
+
+number = "8888888"
+k = 6
+print(solution(number, k))
