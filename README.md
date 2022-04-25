@@ -3944,3 +3944,36 @@ print(solution(s))
 s = "-1 -1"
 print(solution(s))
 ```
+
+<br>
+
+#### Priority Queue
+
+``` priority queue
+import heapq
+
+def solution(operations):
+    answer = []
+
+    for operation in operations:
+        oper, num = operation.split(" ")
+        if oper == "I":
+            heapq.heappush(answer, int(num))
+        elif oper == "D" and answer:
+            if int(num) > 0:
+                answer.pop(len(answer) - 1)
+            else:
+                heapq.heappop(answer)
+
+    if answer :
+        return [max(answer), min(answer)]
+    else :
+        return [0,0]
+
+
+operations = ["I 16","D 1"]
+print(solution(operations))
+
+operations = ["I 7","I 5","I -5","D -1"]
+print(solution(operations))
+```
