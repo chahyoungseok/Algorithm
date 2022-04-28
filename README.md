@@ -4059,3 +4059,59 @@ genres = ["classic", "pop", "classic", "classic", "pop"]
 plays = [500, 600, 150, 800, 2500]
 print(solution(genres, plays))
 ```
+
+<br>
+
+#### Travel Route
+
+``` travel route
+from collections import defaultdict
+
+
+def dfs(start, country, visited, answer, tickets_len) :
+    answer.append(start)
+    if len(answer) == tickets_len :
+        return answer
+
+    for i in range(len(country[start])) :
+        if visited[start][i] :
+            visited[start][i] = False
+            if dfs(country[start][i], country, visited, answer, tickets_len) :
+                return answer
+            visited[start][i] = True
+
+    answer.pop()
+    return False
+
+
+def solution(tickets):
+    answer = []
+    country, visited, tickets_len = defaultdict(list), defaultdict(list), 0
+
+    for start, destination in tickets:
+        country[start].append(destination)
+        visited[start].append(True)
+
+    for country_case in country.keys() :
+        sort_case = list(sorted(country[country_case]))
+        country[country_case] = sort_case
+        tickets_len += len(sort_case)
+
+    return dfs("ICN", country, visited, answer, tickets_len + 1)
+
+
+tickets = [["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]
+print(solution(tickets))
+
+tickets = [["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]]
+print(solution(tickets))
+
+tickets = [["ICN", "AAA"], ["ICN", "BBB"], ["BBB", "ICN"]]
+print(solution(tickets))
+
+tickets = [["ICN", "A"], ["ICN", "C"], ["C", "ICN"], ["ICN", "B"], ["B", "ICN"]]
+print(solution(tickets))
+
+tickets = [["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]]
+print(solution(tickets))
+```
