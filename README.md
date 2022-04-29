@@ -13,7 +13,7 @@
     <li><a href="#shortest-path">Shortest Path</a></li>
     <li><a href="#graph">Graph</a></li>
     <li><a href="#practice-solution">Practice Solution</a></li>
-    <li><a href="#all-practice">All-Practice</a></li>
+    <li><a href="#programmers">Programmers</a></li>
   </ol>
 </details>
 <br>
@@ -2879,7 +2879,7 @@ print(result)
 
 <br><br>
 
-## All practice
+## Programmers
 
 #### Get report results
 
