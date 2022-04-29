@@ -4116,3 +4116,21 @@ print(solution(tickets))
 tickets = [["ICN", "A"], ["A", "B"], ["A", "C"], ["C", "A"], ["B", "D"]]
 print(solution(tickets))
 ```
+
+<br>
+
+#### Fibonachi
+
+```fibonachi
+def solution(n):
+    fibonachi = [0,1]
+    for i in range(2, n + 1) :
+         fibonachi.append(fibonachi[i-1] + fibonachi[i-2])
+    return fibonachi[n] % 1234567
+
+n = 3
+print(solution(n))
+
+n = 5
+print(solution(n))
+```
