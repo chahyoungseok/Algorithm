@@ -3935,6 +3935,7 @@ def solution(s):
     answer = str(min_sel) + " " + str(max_sel)
     return answer
 
+
 s = "1 2 3 4"
 print(solution(s))
 
