@@ -4194,3 +4194,29 @@ arr1 = [[2, 3, 2], [4, 2, 4], [3, 1, 4]]
 arr2 = [[5, 4, 3], [2, 4, 1], [3, 1, 1]]
 print(solution(arr1, arr2))
 ```
+
+<br>
+
+#### Cast JadenCase
+
+``` cast JadenCase
+def solution(s):
+    arr = list(s)
+    if 96 < ord(arr[0]) < 123:
+        arr[0] = chr(ord(arr[0]) - 32)
+
+    for i in range(1, len(arr)):
+        if arr[i - 1] == " " and 96 < ord(arr[i]) < 123:
+            arr[i] = chr(ord(arr[i]) - 32)
+        elif arr[i - 1] != " " and 64 < ord(arr[i]) < 91 :
+            arr[i] = chr(ord(arr[i]) + 32)
+
+    return "".join(arr)
+
+
+s = "3people UnFolloWeD me"
+print(solution(s))
+
+s = "for the last week"
+print(solution(s))
+```
