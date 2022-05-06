@@ -4338,3 +4338,22 @@ print(solution(s))
 s = "bbbaabb"
 print(solution(s))
 ```
+
+<br>
+
+#### Sorting Strings My Own Way
+
+``` sorting strings my own way
+def solution(strings, n):
+    answer = sorted(strings, key=lambda x : x[n] +x)
+    return answer
+
+
+strings = ["sun", "bed", "car"]
+n = 1
+print(solution(strings, n))
+
+strings = ["abce", "abcd", "cdx"]
+n = 2
+print(solution(strings, n))
+```
