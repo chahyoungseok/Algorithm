@@ -4376,3 +4376,53 @@ strings = ["abce", "abcd", "cdx"]
 n = 2
 print(solution(strings, n))
 ```
+
+<br>
+
+#### Jewelry Shopping
+
+``` jewelry shopping
+from collections import defaultdict
+
+
+def solution(gems):
+    jewelry_len, gems_len, dic_gems = len(set(gems)), len(gems), defaultdict(int)
+    start, end, answer = 0, 0, [0, int(1e9)]
+
+    dic_gems[gems[0]] += 1
+    while start < gems_len and end < gems_len :
+        if jewelry_len > len(dic_gems.keys()) :
+            end += 1
+            if end == gems_len :
+                break
+            dic_gems[gems[end]] += 1
+        else :
+            if answer[1] - answer[0] > end - start :
+                answer = [start, end]
+            if dic_gems[gems[start]] == 1 :
+                del dic_gems[gems[start]]
+            else :
+                dic_gems[gems[start]] -= 1
+            start += 1
+
+    answer[0] += 1
+    answer[1] += 1
+    return answer
+
+
+gems = ["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]
+print(solution(gems))
+
+gems = ["AA", "AB", "AC", "AA", "AC"]
+print(solution(gems))
+
+gems = ["XYZ", "XYZ", "XYZ"]
+print(solution(gems))
+
+gems = ["ZZZ", "YYY", "NNNN", "YYY", "BBB"]
+print(solution(gems))
+```
+
+배운점
+ - 검색을 할 때, 딕셔너리를 활용할 수 있는지 생각해보기
+ - 배열이 클 때, 완전탐색을 할 수 없다면 while을 활용해 투포인터를 활용할 수 있을지 생각해보기
