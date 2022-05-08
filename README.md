@@ -4426,3 +4426,52 @@ print(solution(gems))
 배운점
  - 검색을 할 때, 딕셔너리를 활용할 수 있는지 생각해보기
  - 배열이 클 때, 완전탐색을 할 수 없다면 while을 활용해 투포인터를 활용할 수 있을지 생각해보기
+
+<br>
+
+#### Shared Taxi Fare
+
+```shared taxi fare
+def solution(n, s, a, b, fares):
+    min_distance = int(1e9)
+    graph = [[int(1e9)] * (n + 1) for _ in range(n + 1)]
+    for fare in fares:
+        c, d, f = fare
+        graph[c][d] = f
+        graph[d][c] = f
+
+    for i in range(1, n + 1):
+        graph[i][i] = 0
+
+    for k in range(1, n + 1):
+        for i in range(1, n + 1):
+            for j in range(1, n + 1):
+                graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+
+    for i in range(1, n + 1) :
+        min_distance = min(graph[s][i] + graph[i][a] + graph[i][b], min_distance)
+
+    return min_distance
+
+
+n = 6
+s = 4
+a = 6
+b = 2
+fares = [[4, 1, 10], [3, 5, 24], [5, 6, 2], [3, 1, 41], [5, 1, 24], [4, 6, 50], [2, 4, 66], [2, 3, 22], [1, 6, 25]]
+print(solution(n,s,a,b,fares))
+
+n = 7
+s = 3
+a = 4
+b = 1
+fares = [[5, 7, 9], [4, 6, 4], [3, 6, 1], [3, 2, 3], [2, 1, 6]]
+print(solution(n,s,a,b,fares))
+
+n = 6
+s = 4
+a = 5
+b = 6
+fares = [[2,6,6], [6,3,7], [4,6,7], [6,5,11], [2,5,12], [5,3,20], [2,4,8], [4,3,9]]
+print(solution(n,s,a,b,fares))
+```
