@@ -4516,3 +4516,26 @@ print(solution(n))
 n = 3
 print(solution(n))
 ```
+
+<br>
+
+#### 2016 Years
+
+``` 2016 years
+def solution(a, b):
+    day_of_the_week = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"]
+    months = [0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    days = 0
+
+    for i in range(a) :
+        days += months[i]
+    days += b
+    days = days % 7 - 1
+
+    return day_of_the_week[days % 7]
+
+
+a = 5
+b = 24
+print(solution(a, b))
+```
