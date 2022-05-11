@@ -4539,3 +4539,44 @@ a = 5
 b = 24
 print(solution(a, b))
 ```
+
+<br>
+
+#### Caesar Cipher
+
+``` caesar cipher
+def solution(s, n):
+    list_s = list(s)
+
+    for i in range(len(list_s)):
+        ord_s = ord(list_s[i])
+        if (64 < ord_s < 91) or (96 < ord_s < 123):
+            trans_s = ord_s + n
+        else :
+            list_s[i] = ' '
+            continue
+
+        if ord_s > 96:
+            if trans_s > 122:
+                trans_s -= 26
+        elif ord_s > 64:
+            if trans_s > 90:
+                trans_s -= 26
+
+        list_s[i] = chr(trans_s)
+
+    return "".join(list_s)
+
+
+s = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+n = 25
+print(solution(s, n))
+
+s = "abcdefghijklmnopqrstuvwxyz"
+n = 25
+print(solution(s, n))
+
+s = "a B z"
+n = 4
+print(solution(s, n))
+```
