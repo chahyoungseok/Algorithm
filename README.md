@@ -4745,3 +4745,24 @@ stones = [10,9,8,7,6,5,4,3,2,1]
 k = 1
 print(solution(stones, k))
 ```
+
+<br>
+
+#### Hide Phone Number
+
+``` hide phone number
+def solution(phone_number):
+    answer, phone_number_len = '', len(phone_number)
+
+    for _ in range(phone_number_len - 4):
+        answer += "*"
+
+    return answer + phone_number[phone_number_len - 4: phone_number_len + 1]
+
+
+phone_number = "01033334444"
+print(solution(phone_number))
+
+phone_number = "027778888"
+print(solution(phone_number))
+```
