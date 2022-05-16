@@ -4766,3 +4766,31 @@ print(solution(phone_number))
 phone_number = "027778888"
 print(solution(phone_number))
 ```
+
+<br>
+
+#### GCD and LCM
+
+``` gcd and lcm
+def gcd(n, m) :
+    mod = m % n
+    if mod != 0 :
+        m, n = n, mod
+        return gcd(n, m)
+    else :
+        return n
+
+
+def solution(n, m) :
+    gcd_nm = gcd(n, m)
+    return [gcd_nm, int(n*m / gcd_nm)]
+
+
+n = 5
+m = 2
+print(solution(n, m))
+
+n = 12
+m = 3
+print(solution(n, m))
+```
