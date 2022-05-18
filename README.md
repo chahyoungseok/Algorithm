@@ -4869,3 +4869,7 @@ print(solution(expression))
 expression = "50*6-3*2"
 print(solution(expression))
 ```
+
+배운점
+ - re.split('([-|+|*])', expression)은 구분자를 여러개 쓸 수 있는 split을 담고있는 re 라이브러리
+ - 배열('[]')안에 구분자를 또는('|') 으로 구분하여 '()'안에 담고, 두번째 인자로 나눌 string을 넣는다.
