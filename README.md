@@ -4873,3 +4873,63 @@ print(solution(expression))
 배운점
  - re.split('([-|+|*])', expression)은 구분자를 여러개 쓸 수 있는 split을 담고있는 re 라이브러리
  - 배열('[]')안에 구분자를 또는('|') 으로 구분하여 '()'안에 담고, 두번째 인자로 나눌 string을 넣는다.
+
+<br>
+
+#### Parking Fee Calculation
+
+``` parking fee calculation
+from collections import defaultdict
+
+
+def solution(fees, records):
+    record_split, records_len = [], len(records)
+    fee_dict, pre_state = defaultdict(int), "OUT"
+    answer = []
+
+    for i in range(records_len) :
+        record_split.append(records[i].split(" "))
+        time = record_split[i][0].split(":")
+        record_split[i][0] = int(time[0]) * 60 + int(time[1])
+
+    record_split = sorted(record_split, key=lambda x:int(x[1]))
+
+    for record in record_split :
+        time, car_number, state = record
+
+        if state == "IN":
+            if pre_state == "IN":
+                fee_dict[pre_car_number] += (1439 - pre_time)
+        else :
+            fee_dict[pre_car_number] += (time - pre_time)
+
+        pre_time, pre_car_number, pre_state = time, car_number, state
+
+    if state == "IN":
+        fee_dict[pre_car_number] += (1439 - pre_time)
+
+    for fee in fee_dict.items() :
+        extra_time = fee[1] - fees[0]
+        if extra_time <= 0 :
+            answer.append(fees[1])
+        else :
+            time_unit = extra_time // fees[2]
+            if extra_time % fees[2] != 0 :
+                time_unit += 1
+            answer.append(time_unit * fees[3] + fees[1])
+
+    return answer
+
+
+fees = [180, 5000, 10, 600]
+records = ["05:34 5961 IN", "06:00 0000 IN", "06:34 0000 OUT", "07:59 5961 OUT", "07:59 0148 IN", "18:59 0000 IN", "19:09 0148 OUT", "22:59 5961 IN", "23:00 5961 OUT"]
+print(solution(fees, records))
+
+fees = [120, 0, 60, 591]
+records = ["16:00 3961 IN","16:00 0202 IN","18:00 3961 OUT","18:00 0202 OUT","23:58 3961 IN"]
+print(solution(fees, records))
+
+fees = [1, 461, 1, 10]
+records = ["00:00 1234 IN"]
+print(solution(fees, records))
+```
