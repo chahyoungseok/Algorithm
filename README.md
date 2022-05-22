@@ -4988,3 +4988,31 @@ n = 5
 results = [[4, 3], [4, 2], [3, 2], [1, 2], [2, 5]]
 print(solution(n, results))
 ```
+
+<br>
+
+#### Problem Description
+
+``` problem description
+def solution(x):
+    x, number = list(str(x)), 0
+    for i in x:
+        number += int(i)
+
+    if int("".join(x)) % number == 0:
+        return True
+    return False
+
+
+arr = 10
+print(solution(arr))
+
+arr = 12
+print(solution(arr))
+
+arr = 11
+print(solution(arr))
+
+arr = 13
+print(solution(arr))
+```
