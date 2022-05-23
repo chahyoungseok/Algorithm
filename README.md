@@ -5080,4 +5080,33 @@ print(solution(n, k))
 배운점
  - 소수 구할때 for문 loop의 끝을 int(소수 ** 0.5) + 1
  - 소수 구할때 for문 증감자를 2
- - 
+
+<br>
+
+#### Colatz Guess
+
+``` colatz guess
+def solution(num):
+    answer = 0
+    while num != 1 :
+        if num % 2 == 0:
+            num //= 2
+        else:
+            num = num * 3 + 1
+        answer += 1
+
+        if answer >= 500 :
+            return -1
+
+    return answer
+
+
+n = 6
+print(solution(n))
+
+n = 16
+print(solution(n))
+
+n = 626331
+print(solution(n))
+```
