@@ -5175,3 +5175,22 @@ print(solution(n))
 n = 3
 print(solution(n))
 ```
+
+<br>
+
+#### Remove Smallest Number
+
+``` remove smallest number
+def solution(arr):
+    if len(arr) == 1:
+        return [-1]
+    arr.remove(min(arr))
+    return arr
+
+
+arr = [4,3,2,1]
+print(solution(arr))
+
+arr = [4,3,2,1]
+print(solution(arr))
+```
