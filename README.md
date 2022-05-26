@@ -5152,3 +5152,26 @@ k = 100000000
 room_number = [1,2,1,2,3,1,2,3,4,1,2,3,4,5]
 print(solution(k, room_number))
 ```
+
+<br>
+
+#### Determine the Square root of an Integer
+
+``` determine the square root of an integer
+import math
+
+
+def solution(n):
+    result = math.sqrt(n)
+    if result % 1 == 0 :
+        return (int(result) + 1) ** 2
+    else :
+        return -1
+
+
+n = 121
+print(solution(n))
+
+n = 3
+print(solution(n))
+```
