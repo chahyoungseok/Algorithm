@@ -5194,3 +5194,86 @@ print(solution(arr))
 arr = [4,3,2,1]
 print(solution(arr))
 ```
+
+<br>
+
+#### Ad Insertion
+
+```ad insertion
+def InttoForm_Clock(clock) :
+    hour = clock // 3600
+    clock = clock % 3600
+    minute = clock // 60
+    clock = clock % 60
+
+    if hour < 10 :
+        hour = "0" + str(hour)
+
+    if minute < 10 :
+        minute = "0" + str(minute)
+
+    if clock < 10 :
+        clock = "0" + str(clock)
+
+    return str(hour) + ":" + str(minute) + ":" + str(clock)
+
+
+def ArrtoInt_Clock(arr) :
+    return int(arr[0]) * 3600 + int(arr[1]) * 60 + int(arr[2])
+
+
+def solution(play_time, adv_time, logs):
+    total_clock, current_index = 0, 0
+    play_time, adv_time = ArrtoInt_Clock(play_time.split(":")), ArrtoInt_Clock(adv_time.split(":"))
+    dynamic = [0 for _ in range(play_time + 1)]
+
+    if play_time == adv_time :
+        return "00:00:00"
+
+    for log in logs :
+        start, end = log.split("-")
+        dynamic[ArrtoInt_Clock(start.split(":"))] += 1
+        dynamic[ArrtoInt_Clock(end.split(":"))] -= 1
+
+    end_index = 0
+    for i in range(adv_time) :
+        end_index += dynamic[i]
+        total_clock += end_index
+        max_time = total_clock
+
+    start_index = 0
+    for i in range(1, play_time - adv_time + 1) :
+        start_index += dynamic[i - 1]
+        end_index += dynamic[i + adv_time - 1]
+        total_clock = total_clock - start_index + end_index
+        if total_clock > max_time :
+            total_clock = max_time
+            current_index = i
+    return InttoForm_Clock(current_index)
+
+
+play_time = "02:03:55"
+adv_time = "00:14:15"
+logs = ["01:20:15-01:45:14", "00:40:31-01:00:00", "00:25:50-00:48:29", "01:30:59-01:53:29", "01:37:44-02:02:30"]
+print(solution(play_time, adv_time, logs))
+
+play_time = "99:59:59"
+adv_time = "25:00:00"
+logs = ["69:59:59-89:59:59", "01:00:00-21:00:00", "79:59:59-99:59:59", "11:00:00-31:00:00"]
+print(solution(play_time, adv_time, logs))
+
+play_time = "50:00:00"
+adv_time = "50:00:00"
+logs = ["15:36:51-38:21:49", "10:14:18-15:36:51", "38:21:49-42:51:45"]
+print(solution(play_time, adv_time, logs))
+
+play_time = "50:00:00"
+adv_time = "49:59:59"
+logs = ["15:36:51-38:21:49", "10:14:18-15:36:51", "38:21:49-42:51:45"]
+print(solution(play_time, adv_time, logs))
+```
+
+배운점
+ - 배열의 길이가 크므로 n^2의 탐색은 안된다고 느낌, 따라서 n의 탐색으로 해결책을 찾다가 포기
+ - dynamic 배열에 사람의 증감을 표현하는 힌트를 블로그에서 얻음
+ - start와 end의 범위가 나왔다면 그 범위를 다 표현할생각보단 각 지점에 표시로 해결할 생각을 하자
