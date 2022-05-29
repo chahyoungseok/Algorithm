@@ -5277,3 +5277,18 @@ print(solution(play_time, adv_time, logs))
  - 배열의 길이가 크므로 n^2의 탐색은 안된다고 느낌, 따라서 n의 탐색으로 해결책을 찾다가 포기
  - dynamic 배열에 사람의 증감을 표현하는 힌트를 블로그에서 얻음
  - start와 end의 범위가 나왔다면 그 범위를 다 표현할생각보단 각 지점에 표시로 해결할 생각을 하자
+
+<br>
+
+#### number reverse
+
+``` number reverse
+def solution(n):
+    answer = list(str(n))
+    answer.reverse()
+    answer = list(map(int, answer))
+    return answer
+
+n= 12345
+print(solution(n))
+```
