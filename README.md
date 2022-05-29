@@ -5292,3 +5292,28 @@ def solution(n):
 n= 12345
 print(solution(n))
 ```
+
+<br>
+
+#### Ternary Flip
+
+``` Ternary Flip
+def solution(n):
+    trans, answer = "", 0
+    while n > 0:
+        trans += str(n % 3)
+        n -= (n % 3)
+        n //= 3
+
+    trans_len = len(trans)
+    for i in range(trans_len):
+        answer += int(trans[trans_len - i - 1]) * (3 ** i)
+    return answer
+
+
+n = 45
+print(solution(n))
+
+n = 125
+print(solution(n))
+```
