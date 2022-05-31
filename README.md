@@ -5317,3 +5317,37 @@ print(solution(n))
 n = 125
 print(solution(n))
 ```
+
+<br>
+
+#### Hanoi Tower
+
+``` hanoi tower
+answer = []
+
+
+def hanoi(n, start, end, sub) :
+    if n == 1 :
+        answer.append([start, end])
+        return
+
+    hanoi(n - 1, start, sub, end)
+    answer.append([start, end])
+    hanoi(n - 1, sub, end, start)
+
+
+def solution(n):
+    start, end, sub = 1, 3, 2
+    hanoi(n, start, end, sub)
+    return answer
+
+
+n = 2
+print(solution(n))
+
+# def hanoi(n) :
+#     if n == 1 :
+#         return 1
+#     return hanoi(n - 1) * 2 + 1
+# 횟수 구하기
+```
