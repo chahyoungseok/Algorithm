@@ -5382,3 +5382,34 @@ arr = [3,2,6]
 divisor = 10
 print(solution(arr, divisor))
 ```
+
+<br>
+
+#### Sum Between Two Integers
+
+``` sum between two integers
+def solution(a, b):
+    answer = 0
+    if a > b :
+        temp = b
+        b = a
+        a = temp
+
+    for i in range(a, b + 1) :
+        answer += i
+
+    return answer
+
+
+a = 3
+b = 5
+print(solution(a, b))
+
+a = 3
+b = 3
+print(solution(a, b))
+
+a = 5
+b = 3
+print(solution(a, b))
+```
