@@ -5413,3 +5413,17 @@ a = 5
 b = 3
 print(solution(a, b))
 ```
+
+<br>
+
+#### Placing Strings in Descending Order
+
+``` placing strings in descending order
+def solution(s):
+    answer = sorted(s, reverse=True)
+    return "".join(answer)
+
+
+s = "Zbcdefg"
+print(solution(s))
+```
