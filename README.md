@@ -5451,3 +5451,27 @@ print(solution(s))
 s = "1234"
 print(solution(s))
 ```
+
+<br>
+
+#### SuBagSuBagSuBagSuBagSuBagSu?
+
+```subagsubagsubagsubagsubagsu?
+def solution(n):
+    str1, str2 = "수", "박"
+    answer = ''
+    for i in range(n) :
+        if i % 2 == 0 :
+            answer += str1
+        else :
+            answer += str2
+
+    return answer
+
+
+n = 3
+print(solution(n))
+
+n = 4
+print(solution(n))
+```
