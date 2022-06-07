@@ -5475,3 +5475,23 @@ print(solution(n))
 n = 4
 print(solution(n))
 ```
+
+<br>
+
+#### Sum of Factors
+
+``` sum of factors
+def solution(n):
+    answer = 0
+    for i in range(1, n + 1) :
+        if n % i == 0 :
+            answer += i
+    return answer
+
+
+n = 12
+print(solution(n))
+
+n = 5
+print(solution(n))
+```
