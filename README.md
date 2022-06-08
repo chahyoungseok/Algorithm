@@ -5495,3 +5495,17 @@ print(solution(n))
 n = 5
 print(solution(n))
 ```
+
+<br>
+
+#### Placing Integers in Descending Order
+
+```placing integers in descending order
+def solution(n):
+    answer = sorted(list(str(n)), reverse=True)
+    return int("".join(answer))
+
+
+n = 118372
+print(solution(n))
+```
