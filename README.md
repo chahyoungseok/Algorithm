@@ -5509,3 +5509,22 @@ def solution(n):
 n = 118372
 print(solution(n))
 ```
+
+<br>
+
+#### Even and Odd
+
+```even and odd
+def solution(num):
+    if num % 2 == 0 :
+        return "Even"
+    else :
+        return "Odd"
+
+
+n = 3
+print(solution(n))
+
+n = 4
+print(solution(n))
+```
