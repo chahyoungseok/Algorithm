@@ -14,6 +14,7 @@
     <li><a href="#graph">Graph</a></li>
     <li><a href="#practice-solution">Practice Solution</a></li>
     <li><a href="#programmers">Programmers</a></li>
+    <li><a href="#baekjoon">Baek Joon</a></li>
   </ol>
 </details>
 <br>
@@ -5617,4 +5618,27 @@ def solution(n):
 
 n = 12
 print(solution(n))
+```
+
+<br>
+
+#### Addition of Matrices
+
+``` addition of matrices
+def solution(arr1, arr2):
+    arr1_len = len(arr1)
+    answer = [[] for _ in range(arr1_len)]
+    for i in range(arr1_len) :
+        for j in range(len(arr1[0])) :
+            answer[i].append(arr1[i][j] + arr2[i][j])
+    return answer
+
+
+arr1 = [[1,2],[2,3]]
+arr2 = [[3,4],[5,6]]
+print(solution(arr1,arr2))
+
+arr1 = [[1],[2]]
+arr2 = [[3],[4]]
+print(solution(arr1,arr2))
 ```
