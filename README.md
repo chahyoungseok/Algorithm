@@ -5528,3 +5528,93 @@ print(solution(n))
 n = 4
 print(solution(n))
 ```
+
+<br>
+
+#### N-Queen (시행착오 1)
+
+``` n-queen
+answer = 0
+
+
+def check_board(board, colum, row, n) :
+    for i in range(colum + 1) :
+        if board[i][row] == 1 :
+            return False
+
+    standard = max(colum, row) + 1
+    for i in range(standard) :
+        if colum - i >= 0 and row - i >= 0 and board[colum - i][row - i] == 1 :
+            return False
+
+    for i in range(standard) :
+        if colum - i >= 0 and row + i < n and board[colum - i][row + i] == 1:
+            return False
+
+    return True
+
+
+def bfs(board, colum, row, n) :
+    global answer
+    if colum + 1 == n :
+        answer += 1
+        return
+
+    board[colum][row] = 1
+    for i in range(n) :
+        if check_board(board, colum + 1, i, n) :
+            bfs(board, colum + 1, i, n)
+
+    board[colum][row] = 0
+
+
+def solution(n):
+    board = [[0 for _ in range(n)] for _ in range(n)]
+    for row in range(n) :
+        bfs(board, 0, row, n)
+
+    return answer
+```
+
+해결방안 :
+ - board의 탐색범위를 n^2에서 n으로 줄이자
+
+<br>
+
+#### N-Queen
+
+``` n-queen
+answer = 0
+
+
+def check_board(board, colum, row) :
+    for i in range(colum) :
+        if board[i] == row or abs(row - board[i]) == colum - i :
+            return False
+    return True
+
+
+def bfs(board, colum, row, n) :
+    global answer
+    if colum + 1 == n :
+        answer += 1
+        return
+
+    board[colum] = row
+    for i in range(n) :
+        if check_board(board, colum + 1, i) :
+            bfs(board, colum + 1, i, n)
+
+    board[colum] = 0
+
+
+def solution(n):
+    board = [0] * n
+    for row in range(n) :
+        bfs(board, 0, row, n)
+    return answer
+
+
+n = 12
+print(solution(n))
+```
