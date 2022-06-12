@@ -5642,3 +5642,28 @@ arr1 = [[1],[2]]
 arr2 = [[3],[4]]
 print(solution(arr1,arr2))
 ```
+
+<br>
+
+#### n Numbers Spaced by x
+
+``` n numbers spaced by x
+def solution(x, n):
+    answer = []
+    for i in range(1, n + 1) :
+        answer.append(x * i)
+    return answer
+
+
+x = 2
+n = 5
+print(solution(x,n))
+
+x = 4
+n = 3
+print(solution(x,n))
+
+x = -4
+n = 2
+print(solution(x,n))
+```
