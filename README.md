@@ -5785,3 +5785,41 @@ for money in money_case :
 
 print(total)
 ```
+
+<br>
+
+#### Conference Room Assignment
+
+``` conference room assignment
+N = int(input())
+
+schedule, min_schedules, real_schedule, count = [], [], [], 0
+for _ in range(N) :
+    start, end = map(int, input().split())
+    if start == end :
+        count += 1
+    else :
+        schedule.append([start, end])
+
+schedule = sorted(schedule)
+for i in schedule :
+    if not real_schedule or real_schedule[len(real_schedule) - 1][0] != i[0] :
+        real_schedule.append(i)
+
+if not real_schedule :
+    print(count)
+else :
+    min_schedules.append(real_schedule[0])
+    real_schedule.pop(0)
+    for i in real_schedule :
+        s, e = i
+        s_len = len(min_schedules) - 1
+
+        if min_schedules[s_len][1] > s :
+            if min_schedules[s_len][1] > e :
+                min_schedules.pop(s_len)
+            else :
+                continue
+        min_schedules.append([s, e])
+    print(len(min_schedules) + count)
+``
