@@ -6031,3 +6031,48 @@ def solution(lottos, win_nums):
 
     return answer
 ```
+
+<br>
+
+#### Average
+
+``` average
+def solution(scores) :
+    score_len = len(scores)
+    answer, result = [], [0 for _ in range(score_len)]
+    for i in range(score_len) :
+        check = False
+        for j in range(score_len) :
+            result[i] += scores[j][i]
+            if scores[i][i] > scores[j][i] or scores[i][i] < scores[j][i]  :
+                check = True
+        if check :
+            result[i] -= scores[i][i]
+            result[i] /= score_len - 1
+        else :
+            result[i] /= score_len
+
+    for i in result :
+        if i >= 90 :
+            answer.append('A')
+        elif i >= 80 :
+            answer.append('B')
+        elif i >= 70 :
+            answer.append('C')
+        elif i >= 50 :
+            answer.append('D')
+        else:
+            answer.append('F')
+
+    return "".join(answer)
+
+
+scores = [[100,90,98,88,65],[50,45,99,85,77],[47,88,95,80,67],[61,57,100,80,65],[24,90,94,75,65]]
+print(solution(scores))
+
+scores = [[50,90],[50,87]]
+print(solution(scores))
+
+scores = [[70,49,90],[68,50,38],[73,31,100]]
+print(solution(scores))
+```
