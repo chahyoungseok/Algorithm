@@ -6076,3 +6076,33 @@ print(solution(scores))
 scores = [[70,49,90],[68,50,38],[73,31,100]]
 print(solution(scores))
 ```
+
+<br>
+
+#### a Balanced World
+
+```a balanced world
+def is_balance(data) :
+    while ("()" in data) or ("[]" in data) :
+        if "()" in data :
+            data = data.replace("()", "")
+        if "[]" in data :
+            data = data.replace("[]", "")
+
+    if data == "" :
+        return "yes"
+    else:
+        return "no"
+
+
+while True :
+    data = input()
+    if data == '.':
+        break
+    real_data = ""
+    for i in data :
+        if i == "(" or i == ")" or i == "[" or i == "]" :
+            real_data += i
+
+    print(is_balance(real_data))
+```
