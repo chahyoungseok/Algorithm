@@ -6189,3 +6189,13 @@ def solution(rows, columns, queries):
 
     return answer
 ```
+
+<br>
+
+#### Escape from Rectangle
+
+``` Escape from Rectangle
+x, y, w, h = map(int, input().split())
+
+print(min(x, w - x, y, h - y))
+```
