@@ -6219,3 +6219,18 @@ for _ in range(M) :
     start, end = map(int, input().split())
     print(start_arr[end] - start_arr[start - 1])
 ```
+
+<br>
+
+#### Sequence
+
+``` sequence
+N, K = map(int, input().split())
+temperate = list(map(int, input().split()))
+t_a = [sum(temperate[:K])]
+
+for i in range(N - K) :
+    t_a.append(t_a[i] - temperate[i] + temperate[K + i])
+
+print(max(t_a))
+```
