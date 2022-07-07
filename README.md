@@ -6259,3 +6259,29 @@ for _ in range(q) :
     a, l, r = input().split()
     print(dp_list[ord(a) - a_asc][int(r) + 1] - dp_list[ord(a) - a_asc][int(l)])
 ```
+
+<br>
+
+#### Find PrimeNumber
+
+``` find primeNumber
+import math
+
+
+def isPrime(number) :
+    if number == 2:
+        return True
+    elif number == 1 or number % 2 == 0 :
+        return False
+
+    for i in range(3, int(math.sqrt(number)) + 1, 2) :
+        if number % i == 0 :
+            return False
+    return True
+
+
+start, end = map(int, input().split())
+for i in range(start, end + 1) :
+    if isPrime(i) :
+        print(i)
+```
