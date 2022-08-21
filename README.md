@@ -8191,3 +8191,28 @@ for i in range(1, 3) :
 
 print(max(dp[2]))
 ```
+
+<br>
+
+#### bracket
+
+``` bracket
+# catalan수는 n개의 노드를 이용해 이진트리를 만드는 경우의 수를 풀때도 사용됩니다.
+
+import math, sys
+
+
+def catalan(number) :
+    standard = math.factorial(number)
+    return math.factorial(number * 2) // (standard ** 2 * (number + 1))
+
+
+T = int(sys.stdin.readline().strip())
+
+for _ in range(T) :
+    L = int(sys.stdin.readline().strip())
+    if L % 2 == 0 :
+        print(catalan(L // 2) % 1000000007)
+    else :
+        print(0)
+```
