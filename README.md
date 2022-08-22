@@ -8221,7 +8221,7 @@ for _ in range(T) :
 
 #### Mutalisk
 
-```` Mutalisk
+``` Mutalisk
 import sys
 from itertools import permutations
 from collections import deque
