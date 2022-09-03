@@ -8751,3 +8751,30 @@ allString = "xabxxbaxbaxbaxbaxabxbaxbabx"
 pattern = "abx"
 print(solution(allString, pattern))
 ```
+
+<br>
+
+#### string explosion
+
+```string explosion
+import sys
+
+allString = sys.stdin.readline().strip()
+pattern = sys.stdin.readline().strip()
+pattern_size = len(pattern)
+q, pattern_end = [], pattern[pattern_size - 1]
+
+for i in allString :
+    q.append(i)
+    if i == pattern_end and "".join(q[-pattern_size:]) == pattern :
+        del q[-pattern_size:]
+
+if q :
+    print("".join(q))
+else :
+    print("FRULA")
+```
+
+배운점
+ - 문자열 문제는 KMP 알고리즘을 활용하는 것과 스택을 사용하는 것 2가지 경우로 나뉜다.
+ - 배열의 [-상수 :]의 의미와 del q[상수:]의 활용도 알아두자
