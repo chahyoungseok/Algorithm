@@ -10147,3 +10147,16 @@ tree = Tree(edges, 1)
 g, result = tree.cal_dist(0)
 print(result)
 ```
+
+<br>
+
+#### pikachu
+
+``` pikachu
+import sys, re
+
+r = re.compile('(pi|ka|chu)+')
+answer = r.fullmatch(sys.stdin.readline().strip())
+
+print("YES" if answer != None else "NO")
+```
