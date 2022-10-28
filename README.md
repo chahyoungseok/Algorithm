@@ -10819,3 +10819,22 @@ for i in range(len(A_hat)) :
 for i in range(N) :
     print(A_dict[A[i]], end=" ")
 ```
+
+<br>
+
+#### Sum of subsequences
+
+``` Sum of subsequences
+import sys
+from itertools import combinations
+
+N, S = map(int, (sys.stdin.readline()).split())
+N_list = list(map(int, (sys.stdin.readline()).split()))
+
+count = 0
+for i in range(1, N + 1) :
+    for comb in combinations(N_list, i) :
+        if S == sum(comb) :
+            count += 1
+print(count)
+```
