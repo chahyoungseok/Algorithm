@@ -11809,3 +11809,44 @@ public class Main {
     }
 }
 ```
+
+<br>
+
+#### IOIOI
+
+``` IOIOI
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Stack;
+
+public class Main {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        int M = Integer.parseInt(br.readLine());
+
+        char[] list = br.readLine().toCharArray();
+        int count = 0;
+        int size = 0;
+        Stack<Character> stack = new Stack<>();
+        stack.add(list[0]);
+        for(int i=1;i<M;i++){
+            if(stack.isEmpty() || stack.get(size) != list[i]){
+                stack.add(list[i]);
+                size++;
+                if(list[i] == 'I' && size + 1 >= (N * 2) + 1){
+                    count += 1;
+                }
+            }
+            else {
+                stack.clear();
+                stack.add(list[i]);
+                size = 0;
+            }
+        }
+        System.out.println(count);
+    }
+}
+```
