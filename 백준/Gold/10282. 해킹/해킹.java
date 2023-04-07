@@ -8,13 +8,13 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    private static int n,d,c;
-    private final static int INF = (int) 1e9;
+    private static int n, d, c;
     private static ArrayList<ArrayList<Node>> graph;
-    private static int[] dis = new int[10001];
+    private final static int INF = (int) 1e9;
+    private static int[] distances = new int[10001];
+
 
     public static void main(String[] args) throws IOException {
-
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         int t = Integer.parseInt(reader.readLine());
@@ -26,97 +26,90 @@ public class Main {
         while (t-- > 0) {
             st = new StringTokenizer(reader.readLine());
 
-            n = Integer.parseInt(st.nextToken());//컴퓨터 개수
-            d = Integer.parseInt(st.nextToken());//의존성 개수
-            c = Integer.parseInt(st.nextToken());//해킹당한 컴퓨터 번호
+            n = Integer.parseInt(st.nextToken()); // 노드의 개수
+            d = Integer.parseInt(st.nextToken()); // 간선의 개수
+            c = Integer.parseInt(st.nextToken()); // 시작점
 
             graph = new ArrayList<>();
 
-            for (int i=0; i<=n; i++) {
+            for (int i=0;i<n+1;i++){
                 graph.add(new ArrayList<>());
             }
 
-            for (int i=0; i<d; i++) {
+            for (int i=0;i<d;i++){
                 st = new StringTokenizer(reader.readLine());
 
-                int a = Integer.parseInt(st.nextToken());//컴퓨터 a가
-                int b = Integer.parseInt(st.nextToken());//컴퓨터 b를 의존
-                int s = Integer.parseInt(st.nextToken());//b가 감염되면 s초후 a도 감염됨
+                int a = Integer.parseInt(st.nextToken()); // 의존자
+                int b = Integer.parseInt(st.nextToken()); // 의존주
+                int s = Integer.parseInt(st.nextToken()); // 시간
 
                 graph.get(b).add(new Node(a, s));
             }
 
-            Arrays.fill(dis,INF);
+            Arrays.fill(distances, INF);
 
             dijkstra(c);
 
-            int cnt = 0;
+            int count = 0;
             int result = 0;
-            for (int i=1; i<=n; i++) {
-                if (dis[i] != INF) {
-                    cnt++;
-                    result = Math.max(result, dis[i]);
+
+            for(int i=1;i<n+1;i++){
+                if(distances[i] != INF){
+                    count++;
+                    result = Math.max(result, distances[i]);
                 }
             }
-
-            sb.append(cnt + " " + result + "\n");
-
+            sb.append(count + " " + result + "\n");
         }
 
-        System.out.print(sb);
-
+        System.out.println(sb);
     }
 
-    private static void dijkstra(int start) {
+    private static void dijkstra(int start){
+        PriorityQueue<Node> q = new PriorityQueue<>();
+        q.add(new Node(start, 0));
+        distances[start] = 0;
 
-        PriorityQueue<Node> pq = new PriorityQueue<>();
-        pq.add(new Node(start, 0));
-        dis[start] = 0;
+        while (!q.isEmpty()) {
+            Node next_node = q.poll();
+            int dist = next_node.getDistance();
+            int now = next_node.getNode();
 
-        while (!pq.isEmpty()) {
-
-            Node node = pq.poll();
-            int dist = node.distance;
-            int now = node.index;
-
-            if (dis[now] < dist) {
+            if (dist > distances[now]){
                 continue;
             }
 
-            for (int i=0; i<graph.get(now).size(); i++) {
-                int cost = dis[now] + graph.get(now).get(i).getDistance();
+            for (Node next : graph.get(now)){
+                int cost = next.getDistance() + dist;
 
-                if (cost < dis[graph.get(now).get(i).getIndex()]) {
-                    dis[graph.get(now).get(i).getIndex()] = cost;
-                    pq.add(new Node(graph.get(now).get(i).getIndex(), cost));
+                if (distances[next.getNode()] > cost){
+                    distances[next.getNode()] = cost;
+                    q.add(new Node(next.getNode(), cost));
                 }
             }
-
         }
+    }
 
-    }//dijkstra
+    public static class Node implements Comparable<Node>{
+        private int node;
+        private int distance;
 
-    static class Node implements Comparable<Node> {
-        int index, distance;
-        Node (int index, int distance) {
-            this.index = index;
+        public Node(int node, int distance) {
+            this.node = node;
             this.distance = distance;
         }
 
-        private int getIndex() {
-            return this.index;
+        public int getNode() {
+            return this.node;
         }
 
-        private int getDistance() {
+        public int getDistance() {
             return this.distance;
         }
 
         @Override
-        public int compareTo(Node o) {
-            if (this.distance < o.distance) {
-                return -1;
-            }
-            return 1;
+        public int compareTo(Node other) {
+            return this.distance - other.distance;
         }
     }
 }
