@@ -1,44 +1,42 @@
 import sys
 
 
-def find_parent(x, parent) :
-    if parent[x] != x :
-        return find_parent(parent[x], parent)
-    return x
+def find_parent(x):
+    if parent[x] != x:
+        parent[x] = find_parent(parent[x])
+    return parent[x]
 
 
-def union_parent(a, b, parent) :
-    a = find_parent(a, parent)
-    b = find_parent(b, parent)
+def union_parent(a, b):
+    if a == b:
+        return
 
+    a = find_parent(a)
+    b = find_parent(b)
     if a > b :
         parent[a] = b
-    else :
+    else:
         parent[b] = a
 
 
 N = int(sys.stdin.readline().strip())
 M = int(sys.stdin.readline().strip())
 
-parent = [i for i in range(N + 1)]
+parent = [ele for ele in range(N + 1)]
 
-for i in range(1, N + 1) :
-    data = list(map(int, (sys.stdin.readline()).split()))
+for host_node in range(1, N + 1):
+    edge = list(map(int, sys.stdin.readline().strip().split()))
 
-    for j in range(N) :
-        if data[j] == 1 :
-            union_parent(i, j + 1, parent)
+    for node in range(1, N + 1):
+        if edge[node - 1] == 1:
+            union_parent(host_node, node)
 
-plan = list(map(int, (sys.stdin.readline()).split()))
-standard = find_parent(plan[0], parent)
-state = True
-
-for i in range(1, len(plan)) :
-    if standard != find_parent(plan[i], parent) :
-        state = False
+result = "YES"
+trip = list(map(int, sys.stdin.readline().strip().split()))
+depart_city = find_parent(trip[0])
+for city in range(1, len(trip)):
+    if find_parent(trip[city]) != depart_city :
+        result = "NO"
         break
 
-if state :
-    print("YES")
-else :
-    print("NO")
+print(result)
