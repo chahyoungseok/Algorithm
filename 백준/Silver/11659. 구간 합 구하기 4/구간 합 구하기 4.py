@@ -1,13 +1,11 @@
 import sys
 
-input = sys.stdin.readline
-N, M = map(int, input().split())
-board = list(map(int, input().split()))
+N, M = map(int, sys.stdin.readline().strip().split())
+numbers = [0] + list(map(int, sys.stdin.readline().strip().split()))
 
-start_arr = [0] * (N + 1)
 for i in range(N) :
-    start_arr[i + 1] = start_arr[i] + board[i]
+    numbers[i + 1] = numbers[i + 1] + numbers[i]
 
-for _ in range(M) :
-    start, end = map(int, input().split())
-    print(start_arr[end] - start_arr[start - 1])
+for _ in range(M):
+    i, j = map(int, sys.stdin.readline().strip().split())
+    print(numbers[j] - numbers[i - 1])
