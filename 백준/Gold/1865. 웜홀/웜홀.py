@@ -1,33 +1,35 @@
 import sys
 
+
+def bellman_ford(start):
+    distances = [INF for _ in range(N + 1)]
+    distances[start] = 0
+
+    for i in range(1, N + 1):
+        for now_node, next_node, time in edges :
+            if distances[next_node] > distances[now_node] + time:
+                distances[next_node] = distances[now_node] + time
+                if i == N :
+                    return False
+    return True
+
+
 TC = int(sys.stdin.readline().strip())
-for _ in range(TC) :
-    N, M, W = map(int, (sys.stdin.readline()).split())
+INF = sys.maxsize
+for _ in range(TC):
+    N, M, W = map(int, sys.stdin.readline().strip().split())
+    edges = []
 
-    edges = [[int(1e9) for _ in range(N + 1)] for _ in range(N + 1)]
-    for _ in range(M) :
-        S, E, T = map(int, (sys.stdin.readline()).split())
-        edges[S][E] = min(edges[S][E], T)
-        edges[E][S] = min(edges[E][S], T)
+    for _ in range(M):
+        S, E, T = map(int, sys.stdin.readline().strip().split())
+        edges.append([S, E, T])
+        edges.append([E, S, T])
 
-    for _ in range(W) :
-        S, E, T = map(int, (sys.stdin.readline()).split())
-        edges[S][E] = min(edges[S][E], -T)
+    for _ in range(W):
+        S, E, T = map(int, sys.stdin.readline().strip().split())
+        edges.append([S, E, -T])
 
-
-    def floyd() :
-        for k in range(1, N + 1) :
-            for i in range(1, N + 1) :
-                for j in range(1, N + 1) :
-                    target = edges[i][k] + edges[k][j]
-                    if target >= edges[i][j] :
-                        continue
-                    edges[i][j] = target
-                    if target + edges[j][i] < 0 :
-                        return True
-        return False
-
-    if floyd() :
-        print("YES")
-    else :
+    if bellman_ford(1):
         print("NO")
+    else:
+        print("YES")
